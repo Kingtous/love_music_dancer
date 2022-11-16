@@ -34,31 +34,16 @@ class _LoveWidgetState extends State<LoveWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(color: Colors.black),
-            child: AnimatedBuilder(
-              animation: _animationController,
-              builder: (context, child) => CustomPaint(
-                painter: LovePainter(_animationController.value),
-              ),
-            ),
-          ),
+    return Container(
+      margin: const EdgeInsets.all(8.0),
+      alignment: Alignment.center,
+      decoration: const BoxDecoration(color: Colors.black),
+      child: AnimatedBuilder(
+        animation: _animationController,
+        builder: (context, child) => CustomPaint(
+          painter: LovePainter(_animationController.value),
         ),
-        AnimatedBuilder(
-          animation: _animationController,
-          builder: (context, child) => Text(
-            "JT & HQ",
-            style: TextStyle(
-                fontSize: 16 + 5 * math.sin(_animationController.value).abs(),
-                color: Color.fromARGB(255, 200, 105, 136).withOpacity(
-                    0.1 + (0.8) * math.sin(_animationController.value).abs())),
-          ),
-        )
-      ],
+      ),
     );
   }
 
@@ -98,20 +83,20 @@ class LovePainter extends CustomPainter {
       drawHeart(pen, canvas, size, 0.3);
     }
 
-    // final text = TextPainter(
-    //     text: TextSpan(
-    //       text: "JT & HQ",
-    //       style: TextStyle(
-    //           fontSize: 16,
-    //           color: Color.fromARGB(255, 200, 105, 136)
-    //               .withOpacity(0.1 + (0.8) * math.sin(tick).abs())),
-    //     ),
-    //     textDirection: TextDirection.ltr,
-    //     textScaleFactor: 1 + (0.5) * math.sin(tick).abs());
-    // text.layout();
-    // final xCenter = (size.width - text.width) / 2;
-    // final yCenter = (size.height - text.height) / 2;
-    // text.paint(canvas, Offset(xCenter, yCenter));
+    final text = TextPainter(
+        text: TextSpan(
+          text: "JT & HQ",
+          style: TextStyle(
+              fontSize: 16,
+              color: Color.fromARGB(255, 200, 105, 136)
+                  .withOpacity(0.1 + (0.8) * math.sin(tick).abs())),
+        ),
+        textDirection: TextDirection.ltr,
+        textScaleFactor: 1 + (0.5) * math.sin(tick).abs());
+    text.layout();
+    final xCenter = (size.width - text.width) / 2;
+    final yCenter = (size.height - text.height) / 2;
+    text.paint(canvas, Offset(xCenter, yCenter));
   }
 
   double getX(double w) {
@@ -133,7 +118,10 @@ class LovePainter extends CustomPainter {
       var x = -getX(i) * scale;
       var y = -getY(i) * scale;
       x += (x - center.dx) * math.log(math.Random().nextDouble()) * shiftRate;
-      y += (y - center.dy) * math.log(math.Random().nextDouble()) * shiftRate;
+      if (x.abs() > 0.6) {
+        y += (y - center.dy) * math.log(math.Random().nextDouble()) * shiftRate;
+      }
+      
 
       var offset = Offset(x, y);
       offset = transform(offset, canvas, size);
