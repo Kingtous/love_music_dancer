@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:love_symbol_demo/love.dart';
 import 'package:love_symbol_demo/player.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 void main() {
   runApp(const MyApp());
@@ -80,6 +83,12 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(child: AudioPlayerPage())
         ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.pinkAccent,
+        child: const Icon(FontAwesomeIcons.github),
+        onPressed: () {
+          launchUrlString("https://github.com/Kingtous/love_music_dancer");
+      },),
     );
   }
 }
