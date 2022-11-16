@@ -88,7 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(FontAwesomeIcons.github),
         onPressed: () {
           launchUrlString("https://github.com/Kingtous/love_music_dancer");
-      },),
+        },
+      ),
     );
   }
 }

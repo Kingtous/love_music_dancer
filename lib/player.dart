@@ -79,10 +79,11 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
                         child: Text(
                           e.lyrics,
                           style: TextStyle(
-                              fontSize: firstLyricsIndex + subLyrics.indexOf(e) ==
-                                      playIndex
-                                  ? 20
-                                  : 14,
+                              fontSize:
+                                  firstLyricsIndex + subLyrics.indexOf(e) ==
+                                          playIndex
+                                      ? 20
+                                      : 14,
                               color: firstLyricsIndex + subLyrics.indexOf(e) ==
                                       playIndex
                                   ? Colors.white70

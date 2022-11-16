@@ -121,7 +121,6 @@ class LovePainter extends CustomPainter {
       if (x.abs() > 0.6) {
         y += (y - center.dy) * math.log(math.Random().nextDouble()) * shiftRate;
       }
-      
 
       var offset = Offset(x, y);
       offset = transform(offset, canvas, size);
@@ -140,8 +139,8 @@ class LovePainter extends CustomPainter {
 
     var distance = x * x + y * y;
 
-    var offsetX = x * 0.7;
-    var offsetY = y * 0.7;
+    var offsetX = x * 0.4;
+    var offsetY = y * 0.4;
 
     x *= 0.05 * math.log(distance) * math.sin(tick % math.pi);
     y *= 0.05 * math.log(distance) * math.sin(tick % math.pi);
