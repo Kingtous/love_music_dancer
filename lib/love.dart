@@ -34,15 +34,31 @@ class _LoveWidgetState extends State<LoveWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      decoration: const BoxDecoration(color: Colors.black),
-      child: AnimatedBuilder(
-        animation: _animationController,
-        builder: (context, child) => CustomPaint(
-          painter: LovePainter(_animationController.value),
+    return Column(
+      children: [
+        Expanded(
+          child: Container(
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(color: Colors.black),
+            child: AnimatedBuilder(
+              animation: _animationController,
+              builder: (context, child) => CustomPaint(
+                painter: LovePainter(_animationController.value),
+              ),
+            ),
+          ),
         ),
-      ),
+        AnimatedBuilder(
+          animation: _animationController,
+          builder: (context, child) => Text(
+            "JT & HQ",
+            style: TextStyle(
+                fontSize: 16 + 5 * math.sin(_animationController.value).abs(),
+                color: Color.fromARGB(255, 200, 105, 136).withOpacity(
+                    0.1 + (0.8) * math.sin(_animationController.value).abs())),
+          ),
+        )
+      ],
     );
   }
 
@@ -68,33 +84,34 @@ class LovePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final pen = Paint()
-      ..color =
-          Colors.pinkAccent.withOpacity(0.8 - (0.3) * math.sin(tick).abs())
+      ..color = Color.fromARGB(255, 254, 137, 176)
+          .withOpacity(0.9 - (0.3) * math.sin(tick).abs())
       ..strokeWidth = 1.0
       ..style = PaintingStyle.fill;
 
     drawHeart(pen, canvas, size, 0.001);
     for (var time = 0; time < fillTimes; time++) {
+      drawHeart(pen, canvas, size, -0.2);
       drawHeart(pen, canvas, size, -0.05);
       drawHeart(pen, canvas, size, 0.05);
-      drawHeart(pen, canvas, size, 0.07);
-      drawHeart(pen, canvas, size, 0.25);
+      drawHeart(pen, canvas, size, 0.1);
+      drawHeart(pen, canvas, size, 0.3);
     }
 
-    final text = TextPainter(
-        text: TextSpan(
-          text: "JT & HQ",
-          style: TextStyle(
-              fontSize: 16,
-              color: Color.fromARGB(255, 200, 105, 136)
-                  .withOpacity(0.1 + (0.8) * math.sin(tick).abs())),
-        ),
-        textDirection: TextDirection.ltr,
-        textScaleFactor: 1 + (0.5) * math.sin(tick).abs());
-    text.layout();
-    final xCenter = (size.width - text.width) / 2;
-    final yCenter = (size.height - text.height) / 2;
-    text.paint(canvas, Offset(xCenter, yCenter));
+    // final text = TextPainter(
+    //     text: TextSpan(
+    //       text: "JT & HQ",
+    //       style: TextStyle(
+    //           fontSize: 16,
+    //           color: Color.fromARGB(255, 200, 105, 136)
+    //               .withOpacity(0.1 + (0.8) * math.sin(tick).abs())),
+    //     ),
+    //     textDirection: TextDirection.ltr,
+    //     textScaleFactor: 1 + (0.5) * math.sin(tick).abs());
+    // text.layout();
+    // final xCenter = (size.width - text.width) / 2;
+    // final yCenter = (size.height - text.height) / 2;
+    // text.paint(canvas, Offset(xCenter, yCenter));
   }
 
   double getX(double w) {
