@@ -44776,7 +44776,7 @@ p-=k
 o=q*q+p*p
 n=Math.log(o)
 m=B.d.cP(s,3.141592653589793)
-j.push(new A.A(l+q*0.7+q*(0.05*n*Math.sin(m)),k+p*0.7+p*(0.05*Math.log(o)*Math.sin(m))))}b.fp(B.qL,j,a)},
+j.push(new A.A(l+q*0.4+q*(0.05*n*Math.sin(m)),k+p*0.4+p*(0.05*Math.log(o)*Math.sin(m))))}b.fp(B.qL,j,a)},
 nz(a){return this.f!==t.Fe.a(a).f}}
 A.t3.prototype={
 n(){var s=this,r=s.cH$
