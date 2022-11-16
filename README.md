@@ -9,6 +9,9 @@
 
 [在线演示](https://love.kingtous.cn)
 
+## 动画效果
+![](http://img.kingtous.cn/img/img.gif)
+
 ## PC效果
 ![](http://img.kingtous.cn/img/20221116161253.png)
 
