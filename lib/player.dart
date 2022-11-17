@@ -26,7 +26,7 @@ class _AudioPlayerPageState extends State<AudioPlayerPage> {
   late AudioPlayer player;
 
   final url =
-      "https://webfs.ali.kugou.com/202211161446/dbcde2e7231aee1d4e5412421d8ce930/KGTX/CLTX001/3163e562c700c56296bc1383bf43c109.mp3";
+      "https://file.kingtous.cn/index.php?user/publicLink&fid=11fbDvzVF9AL3lwBY2wK_gN-zH5Rvhz9FikAnThgutI5kEUViacZnswtl5t2yr-WWgcXmtWj50u_jvK1KNMXkRGdysMTcyq0vzWWO4RDZc7oAlBD0cZ_ls7hyRhPmIVtAWrsz0NR2A_0uA&file_name=/LBI%E5%88%A9%E6%AF%94%20-%20%E5%B0%8F%E5%9F%8E%E5%A4%8F%E5%A4%A9.mp3";
   final List<Lyric> lyrics = List.empty(growable: true);
   var playIndex = 0;
   bool startPlaying = false;
