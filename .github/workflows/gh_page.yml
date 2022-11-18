@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      
+
     - name: Setup Flutter
       uses: subosito/flutter-action@v1
       with:
@@ -25,7 +25,7 @@ jobs:
       run: flutter pub get
       
     - name: Build web
-      run: flutter build web --release --web-renderer=html
+      run: flutter build web --release --web-renderer=html --base-href="/love_music_dancer/"
       
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
